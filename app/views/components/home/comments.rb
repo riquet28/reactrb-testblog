@@ -5,10 +5,15 @@ module Components
       param :comments
       define_state :new_comment, ""
 
+      before_mount do
+        # note that this will lazy load posts
+        # and only the fields that are needed will be requested
+      end
+
       def render
         ul do
           params.comments.each do |comment|
-            p { comment.body }
+            CommentsListItem(comment: comment)
           end
           new_comment
         end
@@ -43,6 +48,17 @@ module Components
       end
 
     end #end class
+
+
+    class CommentsListItem < React::Component::Base
+      param :comment
+
+      def render
+        li do
+          p {params.comment.body}
+        end
+      end
+    end
 
   end
 end
