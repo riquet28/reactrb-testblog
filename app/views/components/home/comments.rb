@@ -2,17 +2,12 @@ module Components
   module Home
 
     class CommentsList < React::Component::Base
-      param :comments
+      param :post, type: Post
       define_state :new_comment, ""
-
-      before_mount do
-        # note that this will lazy load posts
-        # and only the fields that are needed will be requested
-      end
 
       def render
         ul do
-          params.comments.each do |comment|
+          params.post.comments.each do |comment|
             CommentsListItem(comment: comment)
           end
           new_comment
@@ -33,15 +28,10 @@ module Components
         end.on(:click) { save_new_comment }
       end
 
-      def post_id
-        params.comments.first.id.to_i
-      end
-
       def save_new_comment
-        comment = Comment.new(body: state.new_comment, post_id: 9)
+        comment = Comment.new(body: state.new_comment, post_id: params.post.id)
         comment.save do |result|
-          # note that save is a promise so this code will only run after the save
-          # yet react will move onto the code after this (before the save happens)
+          post.comments << comment
           alert "unable to save" unless result == true
         end
         state.new_comment! ""

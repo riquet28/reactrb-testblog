@@ -26,7 +26,7 @@ module Components
               else
                 h4 {"Les commentaires pour ce post sont :"}
               end
-              CommentsList(comments: post.comments)
+              CommentsList(post: post)
               hr
             end
           end
