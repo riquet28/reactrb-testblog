@@ -6,7 +6,10 @@ module Components
 
       def render
         li do
-          p {params.comment.body}
+          ReactBootstrap::Button(bsClass: "btn btn-default pull-right") do
+            "Détruire ce Commentaire"
+          end.on(:click) { params.comment.destroy }
+          p{params.comment.body}
         end
       end
 
