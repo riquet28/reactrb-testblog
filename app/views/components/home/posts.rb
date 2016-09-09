@@ -35,11 +35,16 @@ module Components
       def new_post
         ReactBootstrap::FormGroup() do
           ReactBootstrap::FormControl(
+            placeholder: "Entrez votre post puis ENTRÉE ou cliquez sur le bouton \"Créer mon Post\"...",
             value: state.new_post,
             type: :text,
           ).on(:change) { |e|
             state.new_post! e.target.value
           }
+        end.on(:key_down) do |e|
+          if e.key_code == 13
+            save_new_post
+          end
         end
         ReactBootstrap::Button(bsClass: "btn btn-primary pull-right") do
           "Créer mon Post"
