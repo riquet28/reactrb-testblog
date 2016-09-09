@@ -17,11 +17,16 @@ module Components
       def new_comment
         ReactBootstrap::FormGroup() do
           ReactBootstrap::FormControl(
+            placeholder: "Entrez votre post puis ENTRÉE ou cliquez sur le bouton \"Créer mon Commentaire\"...",
             value: state.new_comment,
             type: :text,
           ).on(:change) { |e|
             state.new_comment! e.target.value
           }
+        end.on(:key_down) do |e|
+          if e.key_code == 13
+            save_new_comment
+          end
         end
         ReactBootstrap::Button(bsStyle: :primary) do
           "Créer mon Commentaire"
