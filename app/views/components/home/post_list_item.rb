@@ -10,16 +10,14 @@ module Components
           if state.editing_post
             PostEditItem(post: params.post)
           else
-            # input.toggle.on(:click) do
-            #   params.post.body
-            #   params.post.save
-            # end
-          # end
-          h3{ "Titre du Post : \"#{params.post.body}...\"" }.on(:doubleClick) { state.editing_post! true }
-        end
+            h3{ "Titre du Post : \"#{params.post.body}...\"" }.on(:doubleClick) { state.editing_post! true }
+          end
           ReactBootstrap::Button(bsClass: "btn btn-danger pull-right") do
             "Détruire ce Post"
           end.on(:click) { destroy_post }
+          ReactBootstrap::Button(bsClass: "btn btn-success pull-right") do
+            "Modifier ce Post"
+          end.on(:click) { state.editing_post! true }
           p{ "Posté le ... A FAIRE au bon format ... #{params.post.created_at}" }
           hr(class:"separateur-post-comment")
         end
