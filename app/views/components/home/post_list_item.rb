@@ -1,14 +1,23 @@
 module Components
   module Home
     class PostListItem < React::Component::Base
-      param :post
+      param :post, type: Post
+
+      define_state editing_post: false
 
       def render
         li do
+          if state.editing_post
+            PostEditItem(post: params.post).on(:save) { state.editing_post! false}
+          else
+            h3{ "Titre du Post : \"#{params.post.body}...\"" }.on(:doubleClick) { state.editing_post! true }
+          end
           ReactBootstrap::Button(bsClass: "btn btn-danger pull-right") do
             "Détruire ce Post"
           end.on(:click) { destroy_post }
-          h3{ "Titre du Post : \"#{params.post.body}...\"" }
+          ReactBootstrap::Button(bsClass: "btn btn-success pull-right") do
+            "Modifier ce Post"
+          end.on(:click) { state.editing_post! true }
           p{ "Posté le ... A FAIRE au bon format ... #{params.post.created_at}" }
           hr(class:"separateur-post-comment")
         end

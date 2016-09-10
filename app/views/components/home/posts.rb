@@ -46,9 +46,9 @@ module Components
             save_new_post
           end
         end
-        ReactBootstrap::Button(bsClass: "btn btn-primary pull-right") do
-          "Créer mon Post"
-        end.on(:click) { save_new_post }
+          ReactBootstrap::Button(bsClass: "btn btn-primary pull-right") do
+            "Créer mon Post"
+          end.on(:click) { save_new_post }
       end
 
       def save_new_post
