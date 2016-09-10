@@ -1,14 +1,14 @@
 module Components
   module Home
     class PostListItem < React::Component::Base
-      param :post
-      # define_state editing: false
+      param :post, type: Post
+
       define_state editing_post: false
 
       def render
         li do
           if state.editing_post
-            PostEditItem(post: params.post)
+            PostEditItem(post: params.post).on(:save) { state.editing_post! false}
           else
             h3{ "Titre du Post : \"#{params.post.body}...\"" }.on(:doubleClick) { state.editing_post! true }
           end
