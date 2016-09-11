@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
   mount ReactiveRecord::Engine => '/rr'
+
+  devise_for :users
 
   root 'home#show'
 
