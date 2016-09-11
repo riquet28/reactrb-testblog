@@ -5,10 +5,18 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700,500' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
-  <%= render 'layouts/navbar' %>
+  <% if user_signed_in? %>
+    <%= render 'layouts/navbar' %>
+  <% else %>
+    <%= render 'layouts/nav_connection' %>
+  <% end %>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 
   <div class="container">
     <%= yield %>

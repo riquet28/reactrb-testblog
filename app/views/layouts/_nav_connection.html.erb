@@ -10,20 +10,13 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a class="page-scroll" href="#about">Démo Blog</a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#services">Démo Tchat</a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#contact"><%= current_user.email %></a>
-        </li>
-        <li>
-          <%= link_to "<i class='fa fa-sign-out'></i>QUITTER".html_safe, destroy_user_session_path, :method => :delete %>
-        </li>
-      </ul>
+      <ul class="nav navbar-nav navbar-right input-connexion">
+		    <%= form_for(resource, as: resource_name, url: session_path(resource_name), layout: :inline) do |f| %>
+	  	    <%= f.email_field :email, hide_label: true, placeholder: "Email" %>
+	  	    <%= f.password_field :password, hide_label: true, placeholder: "Mot de passe" %>
+		      <%= f.submit "Connexion" %>
+		    <% end %>
+		  </ul>
     </div>
     <!-- /.navbar-collapse -->
   </div>
