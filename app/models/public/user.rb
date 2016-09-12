@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   unless RUBY_ENGINE=='opal'
     devise :database_authenticatable, :registerable,
-       :recoverable, :rememberable, :trackable, :validatable
+           :recoverable, :rememberable, :trackable, :validatable
   end
 
   has_many :posts, :dependent => :destroy

@@ -2,7 +2,7 @@ module Components
   module Home
     class PostListItem < React::Component::Base
       param :post, type: Post
-      param :user, type: User
+      param :current_user, type:User
 
       define_state editing_post: false
 
@@ -13,13 +13,17 @@ module Components
           else
             h3{ "Titre du Post : \"#{params.post.body}...\"" }.on(:doubleClick) { state.editing_post! true }
           end
-          ReactBootstrap::Button(bsClass: "btn btn-danger pull-right") do
-            "Détruire ce Post"
-          end.on(:click) { destroy_post }
-          ReactBootstrap::Button(bsClass: "btn btn-success pull-right") do
-            "Modifier ce Post"
-          end.on(:click) { state.editing_post! true }
-          p{ "Posté le ... A FAIRE au bon format ... #{params.post.created_at}" }
+          if params.post.user.id == current_user.id
+            ReactBootstrap::Button(bsClass: "btn btn-danger pull-right") do
+              "Détruire ce Post"
+            end.on(:click) { destroy_post }
+            ReactBootstrap::Button(bsClass: "btn btn-success pull-right") do
+              "Modifier ce Post"
+            end.on(:click) { state.editing_post! true }
+            else
+            span.badge(class:"pull-right") {"Non proprio du post !!!"}
+          end
+          p{ "Posté le ... A FAIRE au bon format ... #{params.post.created_at} par #{params.post.user.email}" }
           hr(class:"separateur-post-comment")
         end
       end
