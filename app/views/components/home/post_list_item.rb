@@ -2,6 +2,7 @@ module Components
   module Home
     class PostListItem < React::Component::Base
       param :post, type: Post
+      param :user, type: User
 
       define_state editing_post: false
 

@@ -2,7 +2,7 @@ module Components
   module Home
     class PostsList < React::Component::Base
       define_state :new_post, ""
-
+      
       before_mount do
         @posts = Post.all
       end
