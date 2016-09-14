@@ -6,14 +6,14 @@ module Components
 
       def render
         section do
-          div(class: "col-md-9") do
+          div.col_md_12 do
             PostsList(current_user: params.current_user)
           end
-          div(class: "col-md-3") do
-            div.well do
-              UsersPosts()
-            end
-          end
+          # div(class: "col-md-3") do
+          #   div.well do
+          #     UsersPosts()
+          #   end
+          # end
         end
       end
 

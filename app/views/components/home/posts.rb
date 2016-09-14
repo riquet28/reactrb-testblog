@@ -12,26 +12,31 @@ module Components
 
       def render
         section(class: "content") do
-          div(class: "form-post") do
-            div.jumbotron do
-              h2 {"Bonjour #{params.current_user.email},"}
-              h2(class: "titre-form-post") {"Vous avez quelque chose à dire ?"}
-              new_post
-            end
-            h2(id: "liste-post") {"Liste des posts : #{@posts.count}"}
-            ul.list_unstyled do
-              @posts.reverse.each do |post|
-                div.jumbotron do
-                  PostListItem(post: post, current_user: current_user)
-                  if post.comments.blank?
-                    h4 {"Il n'y a pas encore de commentaire pour ce post !"}
-                  else
-                    h4 {"Les commentaires pour ce post : #{post.comments.count}"}
+          div.col_md_9 do
+            div(class: "form-post") do
+              div.jumbotron do
+                h2 {"Bonjour #{params.current_user.email},"}
+                h2(class: "titre-form-post") {"Vous avez quelque chose à dire ?"}
+                new_post
+              end
+              h2(id: "liste-post") {"Liste des posts : #{@posts.count}"}
+              ul.list_unstyled do
+                @posts.reverse.each do |post|
+                  div.jumbotron do
+                    PostListItem(post: post, current_user: current_user)
+                    if post.comments.blank?
+                      h4 {"Il n'y a pas encore de commentaire pour ce post !"}
+                    else
+                      h4 {"Les commentaires pour ce post : #{post.comments.count}"}
+                    end
+                    CommentsList(post: post, current_user: params.current_user)
                   end
-                  CommentsList(post: post, current_user: params.current_user)
                 end
               end
             end
+          end
+          div.col_md_3 do
+            UsersPosts(post: Post.new)
           end
         end
       end
