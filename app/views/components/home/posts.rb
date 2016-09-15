@@ -2,9 +2,11 @@ module Components
   module Home
     class PostsList < React::Component::Base
 
-      param :current_user,type: User
+      param :current_user, type: User
 
       define_state :new_post, ""
+
+      export_state selected_user: nil
 
       before_mount do
         @posts = Post.all
@@ -12,26 +14,47 @@ module Components
 
       def render
         section(class: "content") do
-          div(class: "form-post") do
-            div.jumbotron do
-              h2 {"Bonjour #{params.current_user.email},"}
-              h2(class: "titre-form-post") {"Vous avez quelque chose à dire ?"}
-              new_post
-            end
-            h2(id: "liste-post") {"Liste des posts : #{@posts.count}"}
-            ul.list_unstyled do
-              @posts.reverse.each do |post|
-                div.jumbotron do
-                  PostListItem(post: post, current_user: current_user)
-                  if post.comments.blank?
-                    h4 {"Il n'y a pas encore de commentaire pour ce post !"}
-                  else
-                    h4 {"Les commentaires pour ce post : #{post.comments.count}"}
+          div.col_md_9 do
+            div(class: "form-post") do
+              div.well do
+                h2 {"Bonjour #{params.current_user.email},"}
+                h2(class: "titre-form-post") {"Vous avez quelque chose à dire ?"}
+                new_post
+              end
+              ul.list_unstyled do
+                if selected_user
+                  posts_selected = Post.for_user(selected_user)
+                  h2(id: "liste-post") {"Liste des posts : #{posts_selected.count}"}
+                  posts_selected.each do |post|
+                    div.well do
+                      PostListItem(post: post, current_user: current_user)
+                      if post.comments.blank?
+                        h4 {"Il n'y a pas encore de commentaire pour ce post !"}
+                      else
+                        h4 {"Les commentaires pour ce post : #{post.comments.count}"}
+                      end
+                      CommentsList(post: post, current_user: params.current_user)
+                    end
                   end
-                  CommentsList(post: post, current_user: params.current_user)
+                else
+                  h2(id: "liste-post") {"Liste des posts : #{@posts.count}"}
+                  @posts.reverse.each do |post|
+                    div.well do
+                      PostListItem(post: post, current_user: current_user)
+                      if post.comments.blank?
+                        h4 {"Il n'y a pas encore de commentaire pour ce post !"}
+                      else
+                        h4 {"Les commentaires pour ce post : #{post.comments.count}"}
+                      end
+                      CommentsList(post: post, current_user: params.current_user)
+                    end
+                  end
                 end
               end
             end
+          end
+          div.col_md_3 do
+            UsersPosts(post: Post.new)
           end
         end
       end
@@ -61,6 +84,7 @@ module Components
           alert "unable to save" unless result == true
         end
         state.new_post! ""
+        selected_user! nil
       end
 
     end
