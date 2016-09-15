@@ -6,7 +6,7 @@ module Components
     export_state :current_user
 
     before_mount do
-      Store.current_user! state.current_user
+      state.current_user! params.current_user
     end
 
     def render
