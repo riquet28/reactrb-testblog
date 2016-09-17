@@ -28,7 +28,7 @@ module Components
               posts_selected = Post.for_user(selected_user)
               h2(id: "liste-post") {"Liste des posts : #{posts_selected.count}"}
               posts_selected.each do |post|
-                div.well do
+                div do
                   PostListItem(post: post, current_user: current_user)
                   if post.comments.blank?
                     h4 {"Il n'y a pas encore de commentaire pour ce post !"}
@@ -41,7 +41,7 @@ module Components
             else
               h2(id: "liste-post") {"Liste des posts : #{@posts.count}"}
               @posts.reverse.each do |post|
-                div.well do
+                div do
                   PostListItem(post: post, current_user: current_user)
                   if post.comments.blank?
                     h4 {"Il n'y a pas encore de commentaire pour ce post !"}

@@ -11,8 +11,26 @@ module Components
           if state.editing_post
             PostEditItem(post: params.post).on(:save) { state.editing_post! false}
           else
-            h3{ "Titre du Post : \"#{params.post.body}...\"" }.on(:doubleClick) { state.editing_post! true }
+            div.row do
+              div(class: "col-md-12 margin-btm-20") do
+                div(class: "quote green") do
+                  blockquote do
+                    h3{ "Titre du Post : \"#{params.post.body}...\"" }.on(:doubleClick) { state.editing_post! true }
+                    p {"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s."}
+                  end
+                end
+                div(class: "quote-footer text-right") do
+                  div(class: "quote-author-img") do
+                    img
+                  end
+                  h4 {"Rakesh Sharma"}
+                  p.strong {"Design_mylife"}
+                end
+              end
+            end
           end
+
+
           if params.post.user.id == current_user.id
             ReactBootstrap::Button(bsClass: "btn btn-danger pull-right") do
               "Détruire ce Post"
