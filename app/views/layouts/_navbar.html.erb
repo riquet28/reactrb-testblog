@@ -11,21 +11,10 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a class="page-scroll" href="#about">Démo Blog</a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#services">Démo Tchat</a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#services">Démo Messagerie</a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#contact"><%= current_user.email %></a>
-        </li>
-        <li>
-          <%= link_to "<i class='fa fa-sign-out'></i>QUITTER".html_safe, destroy_user_session_path, :method => :delete %>
-        </li>
+        <li class="<%= 'active' if params[:controller] == 'home' %>"><%= link_to "<i class='fa fa-comment'></i>BLOG".html_safe, root_path %></li>
+        <li class="<%= 'active' if params[:controller] == 'tchats' %>"><%= link_to "<i class='fa fa-comments'></i>TCHAT".html_safe, tchats_path %></li>
+        <li class="<%= 'active' if params[:controller] == 'messengers' %>"><%= link_to "<i class='fa fa-comments-o'></i>MESSENGER".html_safe, messengers_path %></li>
+        <li><%= link_to "<i class='fa fa-sign-out'></i>QUITTER".html_safe, destroy_user_session_path, :method => :delete %></li>
       </ul>
     </div>
     <!-- /.navbar-collapse -->
