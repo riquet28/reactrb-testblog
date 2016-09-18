@@ -16,17 +16,21 @@ module Components
         section(class: "content") do
           div.row do
             div.col_md_12 do
-              h2(class: "titre-form-post") {"Vous avez quelque chose à dire ?"}
+              h2(class: "titre-form-post") {"Vous avez quelque chose à dire? Alors action !!!"}
             end
           end
           div.row do
             div(class: "form-post") do
-            new_post
-          end
+              new_post
+            end
           ul.list_unstyled do
             if selected_user
               posts_selected = Post.for_user(selected_user)
-              h2(id: "liste-post") {"Liste des posts : #{posts_selected.count}"}
+              div.row do
+                div.col_md_12 do
+                  h2(id: "liste-post") {"Liste des posts : #{posts_selected.count}"}
+                end
+              end
               posts_selected.each do |post|
                 div do
                   PostListItem(post: post, current_user: current_user)
@@ -39,7 +43,11 @@ module Components
                 end
               end
             else
-              h2(id: "liste-post") {"Liste des posts : #{@posts.count}"}
+              div.row do
+                div.col_md_12 do
+                  h2(id: "liste-post") {"Liste des posts : #{@posts.count}"}
+                end
+              end
               @posts.reverse.each do |post|
                 div do
                   PostListItem(post: post, current_user: current_user)

@@ -6,9 +6,6 @@ module Components
 
       def render
         div.well do
-          h4{"Ils ont postés :"}
-          hr
-          p{"Un peu de texte qui sert a rien pour le moment"}
           users = User.all
           users.each do |user|
             if user.posts.count > 0
@@ -28,7 +25,7 @@ module Components
             div.col_md_12 do
               ReactBootstrap::Button(bsClass: "btn btn-danger pull-right") do
                 "Voir tous les posts"
-              end.on(:click) { PostsList.selected_user! nil }
+              end.on(:click) { state.selected_user! nil }
             end
           end
         end
