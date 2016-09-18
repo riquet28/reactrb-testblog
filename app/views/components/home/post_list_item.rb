@@ -25,12 +25,12 @@ module Components
                     end
                     div.col_md_3.text_center do
                       if params.post.user.id == current_user.id
-                        ReactBootstrap::Button(bsClass: "btn btn-danger post-button") do
-                          "Supprimer"
-                        end.on(:click) { destroy_post }
                         ReactBootstrap::Button(bsClass: "btn btn-success post-button") do
                           "Modifier"
                         end.on(:click) { state.editing_post! true }
+                        ReactBootstrap::Button(bsClass: "btn btn-danger post-button") do
+                          "Supprimer"
+                        end.on(:click) { destroy_post }
                       else
                         span.badge {"Non modifiable"}
                       end
@@ -43,7 +43,7 @@ module Components
                   img
                 end
                 if post.comments.blank?
-                  h4 {"Il n'y a pas encore de commentaire pour ce post !"}
+                  h4 {"Il n'y a pas encore de commentaire pour ce post... Be the first!"}
                 else
                   h4 {"Les commentaires pour ce post : #{post.comments.count}"}
                 end
