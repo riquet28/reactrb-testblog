@@ -7,6 +7,7 @@ module Components
 
       def render
         div do
+          p(class: "para-edit-post")  { "Après avoir modifiez votre post tapez ENTRÉE" }
           ReactBootstrap::FormGroup() do
             ReactBootstrap::FormControl(
             placeholder: "Modifiez votre post puis ENTRÉE",
@@ -21,7 +22,6 @@ module Components
               end
             end
           end
-          p  { "Après avoir modifiez votre post tapez ENTRÉE" }
         end
       end
 

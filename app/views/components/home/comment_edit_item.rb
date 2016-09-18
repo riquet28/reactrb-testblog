@@ -7,7 +7,7 @@ module Components
 
       def render
         div do
-          p  { "Après avoir modifiez votre commentaire tapez ENTRÉE" }
+          p(class:"para-comment-edit")  { "Après avoir modifiez votre commentaire tapez ENTRÉE" }
           ReactBootstrap::FormGroup() do
             ReactBootstrap::FormControl(
             placeholder: "Modifiez votre commentaire puis ENTRÉE",
