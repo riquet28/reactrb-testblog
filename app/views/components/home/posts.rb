@@ -43,11 +43,6 @@ module Components
               @posts.reverse.each do |post|
                 div do
                   PostListItem(post: post, current_user: current_user)
-                  if post.comments.blank?
-                    h4 {"Il n'y a pas encore de commentaire pour ce post !"}
-                  else
-                    h4 {"Les commentaires pour ce post : #{post.comments.count}"}
-                  end
                   CommentsList(post: post, current_user: params.current_user)
                 end
               end

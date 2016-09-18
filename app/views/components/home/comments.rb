@@ -7,7 +7,7 @@ module Components
       define_state :new_comment, ""
 
       def render
-        ul do
+        ul.list_unstyled do
           params.post.comments.each do |comment|
             CommentsListItem(comment: comment, current_user: params.current_user)
           end
@@ -16,22 +16,28 @@ module Components
       end
 
       def new_comment
-        ReactBootstrap::FormGroup() do
-          ReactBootstrap::FormControl(
-            placeholder: "Votre commentaire puis ENTRÉE ou cliquez sur le bouton \"Créer mon Commentaire\"...",
-            value: state.new_comment,
-            type: :text,
-          ).on(:change) { |e|
-            state.new_comment! e.target.value
-          }
-        end.on(:key_down) do |e|
-          if e.key_code == 13
-            save_new_comment
+        div(class: "row margin-form-comment") do
+          div.col_md_9 do
+            ReactBootstrap::FormGroup() do
+              ReactBootstrap::FormControl(
+                placeholder: "Votre commentaire puis ENTRÉE ou cliquez sur le bouton \"Créer mon Commentaire\"...",
+                value: state.new_comment,
+                type: :text,
+              ).on(:change) { |e|
+                state.new_comment! e.target.value
+              }
+            end.on(:key_down) do |e|
+              if e.key_code == 13
+                save_new_comment
+              end
+            end
+          end
+          div.col_md_3 do
+            ReactBootstrap::Button(bsStyle: :primary) do
+              "Créer mon Commentaire"
+            end.on(:click) { save_new_comment }
           end
         end
-        ReactBootstrap::Button(bsStyle: :primary) do
-          "Créer mon Commentaire"
-        end.on(:click) { save_new_comment }
       end
 
       def save_new_comment

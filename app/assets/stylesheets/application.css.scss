@@ -64,6 +64,12 @@ p {
   position: absolute;
 }
 
+.margin-form-comment {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #F3F3F3
+}
+
 .btn {
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif!important;
   border: none!important;
@@ -203,6 +209,10 @@ p {
   border: 2px solid #32c5d2;
 }
 
+.margin-btm-20 {
+  margin-top: 20px;
+}
+
 .quote {
   position: relative;
 }
@@ -221,10 +231,21 @@ p {
 
 .quote blockquote p {
   color: #fff;
-  padding-top: 25px;
-  padding-bottom: 45px;
-  padding-left: 30px;
+  // padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 90px;
   padding-right: 30px;
+}
+
+.post-paragraphe {
+  padding-top: 15px;
+  padding-bottom: 0!important;
+}
+
+.post-button {
+  // margin-top: -30px!important;
+  margin-bottom: 10px!important;
+  margin-left: 10px!important;
 }
 
 .quote blockquote:before {
@@ -246,14 +267,6 @@ p {
   border-top-color: #32c5d2;
 }
 
-.quote.dark blockquote {
-  background-color: #555;
-}
-
-.quote.dark blockquote:before {
-  border-top-color: #555;
-}
-
 .quote-footer {
   margin: 10px 0;
 }
@@ -270,18 +283,17 @@ p {
   -ms-border-radius: 50%;
   border-radius: 50%;
   margin-left: -5px;
-  margin-top: -40px;
+  margin-top: -70px;
   position: relative;
   z-index: 1;
   padding: 5px;
-  // background-color: #fff;
   border: 2px solid #fff;
 }
 
 .quote-footer h4 {
-  font-size: 14px;
-  margin-bottom: 4px;
-  color: #fff;
+  // font-size: 14px;
+  margin-bottom: 15px;
+  // color: #fff;
 }
 
 .quote-footer p {
@@ -396,6 +408,112 @@ p {
 
 
 
+.container-widget .panel {
+    margin-bottom: 15px;
+    border-radius: 0px;
+    border: 1px #e6e9ee solid;
+}
+
+.panel-info {
+    background: #3f51b5!important;
+    color: #fff;
+}
+
+.panel-success {
+    background: #1ab394!important;
+    color: #fff;
+}
+
+.panel-widget {
+    overflow: hidden;
+    border: none;
+}
+
+.panel .panel-title {
+    color: #58666e;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0px;
+}
+.panel-title {
+    font-family: 'Montserrat', sans-serif;
+    color: #58666e;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 16px 20px;
+    margin: -20px;
+    background: #fff;
+    margin-bottom: 5px;
+    border-bottom: none;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    letter-spacing: 1px;
+}
+.panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    color: inherit;
+}
+.basic-list {
+    margin-bottom: 0;
+    padding: 0;
+}
+
+ul, ol {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+/* Basic List */
+.basic-list {
+  margin-bottom: 0;
+  padding: 0;
+}
+.basic-list li {
+  display: block;
+  position: relative;
+  padding: 12px 0;
+}
+.basic-list li:last-child {
+  border-bottom: none;
+}
+.basic-list .right {
+  position: absolute;
+  right: 0;
+  display: inline-block;
+  padding: 3px 6px;
+  font-weight: 600;
+}
+
+/* Image List */
+.image-list li {
+  padding-left: 50px;
+}
+.image-list .img {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 0;
+  border-radius: 0px;
+}
+.image-list .desc {
+  font-size: 12px;
+  opacity: 0.8;
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .titre-page {
@@ -422,4 +540,99 @@ p {
 .separateur-post-comment {
   border-top: 1px solid red;
   margin-bottom: 25px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*****************CHAT BODY *******************/
+
+.chat {
+  margin-bottom: 15px;
+}
+
+.chat-body .answer {
+    position: relative;
+    max-width: 90%;
+    overflow: hidden;
+    clear: both;
+}
+
+.chat-body .answer .avatar {
+    bottom: 0;
+}
+.chat .avatar {
+  background-image: url("http://bootdey.com/img/Content/avatar/avatar2.png");
+  background-size: contain;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    border-radius: 20px;
+}
+.chat .avatar img {
+  display: block;
+  border-radius: 20px;
+  height: 100%;
+}
+.chat-body .answer .name {
+    font-size: 14px;
+    line-height: 36px;
+
+    p {
+      margin-bottom: 0;
+    }
+}
+
+.chat-body .answer .text {
+    padding: 12px;
+    font-size: 16px;
+    line-height: 26px;
+    position: relative;
+
+    button {
+      margin-left: 10px;
+    }
+}
+
+.chat-body .answer .text:before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    border: 18px solid transparent;
+    border-bottom-width: 0;
+}
+
+.chat-body .answer.right {
+    padding: 0 58px 0 0;
+    text-align: right;
+    float: right;
+}
+
+.chat-body .answer.right .avatar {
+    right: 0;
+}
+// .chat-body .answer.right .avatar .status {
+//     left: 4px;
+// }
+.chat-body .answer.right .text {
+    background: #7266ba;
+    color: #ffffff;
+    border-radius: 8px 8px 0 8px;
+}
+.chat-body .answer.right .text:before {
+    right: -30px;
+    border-left-color: #7266ba;
+    border-left-width: 12px;
 }
