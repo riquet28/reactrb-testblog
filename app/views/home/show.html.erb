@@ -37,7 +37,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="pad-ver text-center">
-                  <button class="btn btn-primary">Pseudo</button>
+                  <button class="btn btn-primary">Nom</button>
                   <button class="btn btn-primary">Avatar</button>
                   <button class="btn btn-primary">Pseudo</button>
                   <button class="btn btn-primary">Poste</button>
@@ -71,20 +71,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div class="panel panel-info panel-widget">
-          <div class="panel-title text-center">
-            Team Members
-          </div>
-          <div class="panel-body">
-            <ul class="basic-list image-list">
-              <li><img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="img" class="img"><b>John Doe</b><span class="desc">Designer</span></li>
-              <li><img src="http://bootdey.com/img/Content/avatar/avatar2.png" alt="img" class="img"><b>Sarah Smith </b><span class="desc">Front-End Developer</span></li>
-              <li><img src="http://bootdey.com/img/Content/avatar/avatar3.png" alt="img" class="img"><b>Stephen Doe</b><span class="desc">Back-End Developer</span></li>
-              <li><img src="http://bootdey.com/img/Content/avatar/avatar4.png" alt="img" class="img"><b>Kendra Hall</b><span class="desc">Marketing</span></li>
-              <li><img src="http://bootdey.com/img/Content/avatar/avatar5.png" alt="img" class="img"><b>Mark Doe</b><span class="desc">iOS Developer</span></li>
-            </ul>
-          </div>
-        </div>
+          <%= react_component "CounterMembers", user: User.new %>
       </div>
     </div>
 
@@ -92,6 +79,6 @@
 
   <div class="col-md-9">
     <%= react_component "Store", current_user: current_user %>
-  </div><!--testimonials row-->
+  </div>
 
 </div>
