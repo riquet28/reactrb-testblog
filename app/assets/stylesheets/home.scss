@@ -293,16 +293,8 @@
 
 
 
-
-
-
-
-
-
-
-
 /* =============================== */
-/* ========== $ =========== */
+/* ======= $ Profile User ======== */
 /* =============================== */
 
 
@@ -354,6 +346,9 @@
 }
 
 .widget-user .widget-user-image {
+  background-image: url("http://bootdey.com/img/Content/avatar/avatar5.png");
+  background-size: contain;
+  // background-repeat:no-repeat;
     position: absolute;
     top: 65px;
     left: 50%;

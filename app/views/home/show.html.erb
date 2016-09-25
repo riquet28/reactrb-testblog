@@ -3,29 +3,10 @@
 
     <div class="row">
       <div class="col-md-12">
+
         <!-- Begin user profile -->
-        <div class="box box-widget widget-user">
-          <div class="widget-user-header bg-aqua">
-            <h3 class="widget-user-username">Alexander Pierce</h3>
-            <h5 class="widget-user-desc">Founder &amp; CEO</h5>
-          </div>
-          <div class="widget-user-image">
-            <img class="img-circle" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="User Avatar">
-          </div>
-          <div class="box-footer">
-            <%= react_component "CounterPostsComments", post: Post.new, comment: Comment.new %>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="pad-ver text-center">
-                  <button class="btn btn-primary">Nom</button>
-                  <button class="btn btn-primary">Avatar</button>
-                  <button class="btn btn-primary">Pseudo</button>
-                  <button class="btn btn-primary">Poste</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <%= react_component "ProfileUser", current_user: current_user, post: Post.new, comment: Comment.new %>
+
       </div>
     </div>
 
