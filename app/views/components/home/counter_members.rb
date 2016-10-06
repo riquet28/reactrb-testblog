@@ -11,7 +11,7 @@ module Components
       def render
         div(class: "panel panel-info panel-widget") do
           div(class: "panel-title text-center") do
-            p{"Team Members"}.span.badge{"#{@users.count}"}
+            p {"Team Members"}.span.badge{"#{@users.count}"}
           end
           div.panel_body do
             ul(class: "basic-list image-list") do
@@ -22,8 +22,8 @@ module Components
                       img
                     end
                     div.col_md_10 do
-                      span {"#{user.email}"}
-                      span.desc {"Développeur Web"}
+                      span {"#{user.lastname.present? ? user.lastname : user.email}"}
+                      span.desc {"#{user.function.present? ? user.function : "Profil non rempli"}"}
                     end
                   end
                 end

@@ -4,6 +4,7 @@ module Components
 
       param :post, type: Post
       param :current_user, type:User
+      # param :on_save, type: Proc, allow_nil: true
 
       define_state editing_post: false
 
@@ -15,7 +16,7 @@ module Components
                 blockquote do
                   div.row do
                     div.col_md_9 do
-                      p(class: "post-paragraphe"){ "Posté le ... A FAIRE au bon format ... #{params.post.created_at} par #{params.post.user.email}" }
+                      p(class: "post-paragraphe"){ "Posté le #{params.post.created_at} par #{params.post.user.nickname.present? ? params.post.user.nickname : params.post.user.email}" }
                       p { "Titre du Post : \"#{params.post.body}...\"" }.on(:doubleClick) { state.editing_post! true }
                       if params.post.user.id == current_user.id
                         if state.editing_post
