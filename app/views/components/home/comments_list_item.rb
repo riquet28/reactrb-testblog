@@ -29,7 +29,7 @@ module Components
                         end
                         div.col_md_10 do
                           div.name do
-                            p{"Posté par #{params.comment.user.email}"}
+                            p{"Posté par #{params.comment.user.nickname.present? ? params.comment.user.nickname : params.comment.user.email}"}
                             p{params.comment.body}.on(:doubleClick) { state.editing_comment! true }
                             if state.editing_comment
                               CommentEditItem(comment: params.comment).on(:save) { state.editing_comment! false}

@@ -9,11 +9,6 @@ module Components
           div.col_md_12 do
             PostsList(current_user: params.current_user)
           end
-          # div(class: "col-md-3") do
-          #   div.well do
-          #     UsersPosts()
-          #   end
-          # end
         end
       end
 
