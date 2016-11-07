@@ -1,42 +1,36 @@
-<div class="container">
+<div class="loginColumns animated fadeInDown">
   <div class="row">
-    <div class="col-md-12 panneau-accueil vertical-center">
-      <div class="row">
-        <div class="col-md-6" style="border-right: 1px solid #fff">
-          <div class="header-content-inner">
-            <h1>Démos ReactRB</h1>
-            <hr>
-              <p>
-                Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!
-              </p>
-              <a href="#about" class="btn btn-primary btn-xl page-scroll">Sources Github</a>
-              <a href="#about" class="btn btn-primary btn-xl page-scroll">Sources Github</a>
-              <a href="#about" class="btn btn-primary btn-xl page-scroll">Sources Github</a>
-            </div>
+    <div class="col-md-6">
+      <h2 class="font-bold">Welcome to REACTRB demo</h2>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+      <p><small>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</small></p>
+    </div>
+    <div class="col-md-6">
+      <div class="ibox-content">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-group">
+            <%= f.email_field :email, autofocus: true, class:"form-control", placeholder: "Email address" %>
           </div>
-
-          <div class="col-md-4 col-md-offset-1">
-            <h2>Connexion</h2>
-            <hr style="margin: 30px auto;">
-            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <div class="field">
-              <%= f.email_field :email, autofocus: true, class:"form-control", placeholder: "Email address" %>
-            </div>
-            <div class="field">
-              <%= f.password_field :password, autocomplete: "off", class:"form-control", placeholder: "Password" %>
-            </div>
-            <div class="actions">
-    		      <%= f.submit "Je clique et go !!!", class: "btn btn-primary btn-block" %>
-            </div>
-    		    <% end %>
-            <div class="actions">
-              <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-                <%= link_to "Je n'ai pas de compte", new_registration_path(resource_name), class: "btn btn-primary btn-block" %><br />
-              <% end -%>
-            </div>
+          <div class="form-group">
+            <%= f.password_field :password, autocomplete: "off", class:"form-control", placeholder: "Password" %>
           </div>
-        </div>
+          <div class="form-group">
+            <%= f.submit "Je clique et go !!!", class: "btn btn-success btn-block" %>
+          </div>
+        <% end %>
+        <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+          <%= link_to "Je n'ai pas de compte", new_registration_path(resource_name), class: "btn btn-danger btn-block" %><br />
+        <% end -%>
       </div>
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-md-6">
+      Copyright Example Company
+    </div>
+    <div class="col-md-6 text-right">
+      <small>© 2014-2015</small>
     </div>
   </div>
 </div>
